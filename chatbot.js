@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 const chatBody = document.querySelector(".chat-body");
 const messageInput = document.querySelector(".message-input");
 const sendMessageButton = document.querySelector("#send-message");
 
-const API_KEY="AIzaSyCIST0qWK0m0wk01VZve956H_uNoJyuz0s";
+const API_KEY= process.env.YOUR_API_KEY_NAME;
 const API_URL=`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?
 key=${API_KEY}`;
 
@@ -95,5 +97,6 @@ messageInput.addEventListener("input",()=>{
     messageInput.style.height=`${messageInput.scrollHeight}px`;
     document.querySelector(".chat-form").style.borderRadius=messageInput.scrollHeight>initialInputHeight?"15px":"32px";
 });
+
 
 sendMessageButton.addEventListener("click",(e)=>handleOutgoingMessage(e))
